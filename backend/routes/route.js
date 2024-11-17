@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Routes
 const companyRoute = require('./company.routes')
-
+const userRoute = require('./user.routes')
 
 const routes = [
   {
@@ -12,7 +12,8 @@ const routes = [
   },
   {
     path:'/user',
-    route:companyRoute
+    // route:companyRoute
+    route:userRoute
   }
 ]
 

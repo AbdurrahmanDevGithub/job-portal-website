@@ -30,7 +30,7 @@ const jobApply=async(applicationData)=>{
     return applyJob;
   }catch(error){
     console.log(error);
-    return {error:"Error in updateJobUpload services",error_msg: error.message}
+    return {error:"Error in job apply services",error_msg: error.message}
   }
 };
 
@@ -40,15 +40,15 @@ const viewApplications=async(email)=>{
     return data
   }catch(error){
     console.log(error);
-    return {error:"Error in updateJobUpload services",error_msg: error.message}
+    return {error:"Error in view job services",error_msg: error.message}
   }
 }
 
 const fetchAllJobs = async(email)=>{
   try{
-    console.log("Fetching jobs for email:", email);  // Debugging log
+    console.log("Fetching jobs for email:", email);  
     const data = await Job.find({ email: email });
-    console.log("Found jobs:", data);  // Debugging log
+    console.log("Found jobs:", data);  
     return data
   }catch(error){
     console.log(error);

@@ -45,8 +45,8 @@ const jobController = {
         // Convert image buffer to Base64 string
         const base64Image = imageFile.buffer.toString('base64');
         image = {
-          filename: imageFile.originalname, // Store original filename
-          content: base64Image, // Base64 encoded image content
+          filename: imageFile.originalname, 
+          content: base64Image,
         };
       }
   
@@ -77,7 +77,7 @@ const jobController = {
     try{
       const {First_Name,Last_Name,job_title,email,contact} = req.body
       const cvFile=req.file
-      const companyEmail = req.query.companyEmail
+      const { companyEmail } = req.params
 
       let cv;
       
@@ -85,8 +85,8 @@ const jobController = {
         // Convert CV buffer to Base64 string
         const base64CV = cvFile.buffer.toString('base64');
         cv = {
-            filename: cvFile.originalname, // Store original filename
-            content: base64CV, // Base64 encoded CV content
+            filename: cvFile.originalname,
+            content: base64CV,
         };
     } else {
         return res.status(400).json({ error: "No CV file uploaded" });
@@ -98,11 +98,11 @@ const jobController = {
       job_title,
       email,
       contact,
-      cv, // Include the CV data
+      cv, 
       companyEmail
   };
 
-  // Assuming you have a service to handle the application upload
+  
     const application = await jobServices.jobApply(applicationData)
     res.status(201).json({ message: 'Job application submitted successfully', application });
 
